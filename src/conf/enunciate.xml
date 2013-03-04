@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<enunciate label="AJP" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="http://enunciate.codehaus.org/schemas/enunciate-1.26.xsd">
+	<namespaces>
+		<namespace id="api" uri="http://api.example.com/" />
+		<namespace id="link" uri="http://api.example.com/link" />
+		<namespace id="persona" uri="http://api.example.com/persona" />
+		<namespace id="job" uri="http://api.example.com/job" />
+	</namespaces>
+	<modules>
+		<!-- Docs -->
+		<docs indexPageName="api.html" splashPackage="org.ajp.server.rest"
+			title="Async Job Processor Project" />
+		<!--disable the jersey module -->
+		<jersey disabled="true" />
+		<!--disable the JBossWS support, use JAX-WS RI (Metro) instead -->
+		<jboss enableJaxws="false" usePathBasedConneg="true" />
+	</modules>
+</enunciate>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/WEB-INF/templates/default.xhtml">
+	<ui:define name="content">
+		<h1>Welcome to AJP</h1>
+
+		<div>
+			<p>AJP is running as a Java EE 6 web application on JBOSS AS7.</p>
+		</div>
+
+		<form id="jobSubmit" method="POST"  enctype="multipart/form-data"
+			action="#{request.contextPath}/rest/jobs/submit">
+			<h2>Job Submission</h2>
+			<h:panelGrid columns="2" columnClasses="titleCell">
+				<h:outputLabel for="jobtype" value="Job Type:" />
+				<h:selectOneMenu id="jobtype" value="#{jobTypes[0]}">
+					<f:selectItems value="#{jobTypes}" />
+				</h:selectOneMenu>
+			</h:panelGrid>
+
+			<p>
+				<h:panelGrid columns="2">
+					<input type="submit" id="submit" value="Submit" />
+					<p>After submit, you will be redirected to this page in 3
+						seconds.</p>
+				</h:panelGrid>
+			</p>
+
+		</form>
+
+		<h2>Recent Jobs.</h2>
+		<h:panelGroup rendered="#{empty latestJobs}">
+			<em>No registered Jobs.</em>
+		</h:panelGroup>
+		<h:dataTable var="_job" value="#{latestJobs}"
+			rendered="#{not empty latestJobs}" styleClass="simpletablestyle">
+			<h:column>
+				<f:facet name="header">REST URL</f:facet>
+				<a href="#{request.contextPath}/rest/jobs/#{_job.id}">/rest/jobs/#{_job.id}</a>
+			</h:column>
+			<h:column>
+				<f:facet name="header">Job Type</f:facet>
+                #{_job.jobType}
+            </h:column>
+			<h:column>
+				<f:facet name="header">Job Status</f:facet>
+                #{_job.jobStatus}
+            </h:column>
+			<h:column>
+				<f:facet name="header">Get Result</f:facet>
+				<a href="#{request.contextPath}/rest/jobs/result/#{_job.id}">/rest/jobs/result/#{_job.id}</a>
+			</h:column>
+			<f:facet name="footer">
+            REST URL for the recently submitted jobs: <a
+					href="#{request.contextPath}/rest/jobs">/rest/jobs</a>
+			</f:facet>
+		</h:dataTable>
+	</ui:define>
+</ui:composition>
