@@ -20,3 +20,5 @@ Here are some commands to be executed from project's home folder that are useful
 mvn clean package - 	This will create a deployable war file in target directory.
 
 mvn jboss-as:deploy - 	This will deploy the war file for the project from target directory to a locally running instance of jboss server.
+
+[![Build Status](https://travis-ci.org/eraser029/AsyncJobProcessor.svg?branch=master)](https://travis-ci.org/eraser029/AsyncJobProcessor)
