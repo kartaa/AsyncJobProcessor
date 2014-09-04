@@ -21,4 +21,4 @@ mvn clean package - 	This will create a deployable war file in target directory.
 
 mvn jboss-as:deploy - 	This will deploy the war file for the project from target directory to a locally running instance of jboss server.
 
-[![Build Status](https://travis-ci.org/eraser029/AsyncJobProcessor.svg?branch=master)](https://travis-ci.org/eraser029/AsyncJobProcessor)
+[![Build Status](https://travis-ci.org/kartaa/AsyncJobProcessor.svg?branch=master)](https://travis-ci.org/kartaa/AsyncJobProcessor)
